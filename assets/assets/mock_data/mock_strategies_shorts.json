@@ -1,0 +1,57 @@
+[
+  {
+    "name": "Moving Average Crossover Strategy",
+    "description": "A strategy based on the crossover of short and long moving averages.",
+    "rules": [
+      {
+        "name": "Buy on Crossover",
+        "expression": "data(SHORT_MA) > data(LONG_MA)",
+        "actions": ["marketOrderBuy"]
+      },
+      {
+        "name": "Sell on Crossunder",
+        "expression": "data(SHORT_MA) < data(LONG_MA)",
+        "actions": ["marketOrderSell"]
+      }
+    ],
+    "symbols": [
+      {
+        "name": "SHORT_MA",
+        "description": "Short-term Moving Average",
+        "type": "TIComponent",
+        "expression": "MA(data(CP), param(SHORT_PERIOD))"
+      },
+      {
+        "name": "LONG_MA",
+        "description": "Long-term Moving Average",
+        "type": "TIComponent",
+        "expression": "MA(data(CLOSE), param(LONG_PERIOD))"
+      },
+      {
+        "name": "CLOSE",
+        "description": "Close Price",
+        "type": "BARSComponent",
+        "expression": "close_price(param(TICKER))"
+      },
+      {
+        "name": "SHORT_PERIOD",
+        "description": "Short Period for SHORT_MA Component",
+        "type": "IntegerParameter",
+        "expression": "5"
+      },
+      {
+        "name": "LONG_PERIOD",
+        "description": "Long Period for LONG_MA Component",
+        "type": "IntegerParameter",
+        "expression": "20"
+      },
+      {
+        "name": "TICKER",
+        "description": "Instrument Ticker",
+        "type": "TickerParameter",
+        "expression": "AAPL"
+      }
+    ]
+  }
+
+]

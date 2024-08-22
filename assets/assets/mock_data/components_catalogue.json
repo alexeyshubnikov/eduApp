@@ -1,0 +1,173 @@
+[
+  {
+    "parameter_types": {
+      "ticker": {
+        "default_value": "AAPL",
+        "data_type": "string",
+        "options": [
+          "AAPL",
+          "MSFT",
+          "TSLA",
+          "AMZN",
+          "BTC",
+          "ETH",
+          "SOL"
+        ],
+        "constraints": {}
+      },
+      "short_string": {
+        "default_value": "Text",
+        "data_type": "string",
+        "options": [],
+        "constraints": {
+          "max": "32"
+        }
+      },
+      "positive_int": {
+        "default_value": "10",
+        "data_type": "int",
+        "options": [],
+        "constraints": {
+          "min": "1"
+        }
+      },
+      "probability": {
+        "default_value": "0.5",
+        "data_type": "double",
+        "options": [],
+        "constraints": {
+          "min": "0",
+          "max": "1"
+        }
+      },
+      "correlation": {
+        "default_value": "0.0",
+        "data_type": "double",
+        "options": [],
+        "constraints": {
+          "min": "-1",
+          "max": "1"
+        }
+      }
+    },
+    "component_editor_objects": {
+      "bars": [
+        {
+          "indicator": "close_price",
+          "description": "close price of last bar",
+          "parameters": [
+            {
+              "ticker": "ticker"
+            }
+          ]
+        },
+        {
+          "indicator": "open_price",
+          "description": "open price of last bar",
+          "parameters": [
+            {
+              "ticker": "ticker"
+            }
+          ]
+        },
+        {
+          "indicator": "high_price",
+          "description": "high price of last bar",
+          "parameters": [
+            {
+              "ticker": "ticker"
+            }
+          ]
+        },
+        {
+          "indicator": "low_price",
+          "description": "low price of last bar",
+          "parameters": [
+            {
+              "ticker": "ticker"
+            }
+          ]
+        },
+        {
+          "indicator": "volume",
+          "description": "trading volume",
+          "parameters": [
+            {
+              "ticker": "ticker"
+            }
+          ]
+        }
+      ],
+      "ta": [
+        {
+          "indicator": "sma",
+          "description": "Simple Moving Average",
+          "parameters": {
+            "ticker": "ticker",
+            "period": "positive_int"
+          }
+        },
+        {
+          "indicator": "ema",
+          "description": "Exponential Moving Average",
+          "parameters": {
+            "ticker": "ticker",
+            "period": "positive_int"
+          }
+        },
+        {
+          "indicator": "rsi",
+          "description": "Relative Strength Index",
+          "parameters": {
+            "ticker": "ticker",
+            "period": "positive_int"
+          }
+        },
+        {
+          "indicator": "macd",
+          "description": "Moving Average Convergence Divergence",
+          "parameters": {
+            "ticker": "ticker",
+            "short_period": "positive_int",
+            "long_period": "positive_int",
+            "signal_period": "positive_int"
+          }
+        }
+      ],
+      "sa": [
+        {
+          "indicator": "gtrends",
+          "description": "Sentiment index scaled to the interval of (0,1) based on Google trends data",
+          "parameters": {
+            "ticker": "ticker",
+            "searchTerm": "short_string"
+          },
+          "underlyingComponents": {
+          }
+        },
+        {
+          "indicator": "reddit",
+          "description": "Sentiment index scaled to the interval of (0,1) based on Reddit data",
+          "parameters": {
+            "ticker": "ticker",
+            "searchTerm": "short_string"
+          },
+          "underlyingComponents": {
+          }
+        }
+      ],
+      "ai": [
+        {
+          "indicator": "signal_predictor",
+          "description": "Sentiment index scaled to the interval of (0,1) based on Google trends data",
+          "parameters": {
+            "model_type": "model_001",
+            "features": "_components",
+            "target": "_component"
+          }
+        }
+      ]
+    }
+  }
+]
+

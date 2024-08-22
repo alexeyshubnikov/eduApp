@@ -1,0 +1,122 @@
+[
+  {
+    "name": "MA",
+    "description": "Moving Average",
+    "parameters": [
+      {
+        "name": "N_STEPS",
+        "longName": "Number of Steps Back",
+        "type": "integer",
+        "value": "1"
+      }
+    ]
+  },
+  {
+    "name": "MAX",
+    "description": "Maximum value over specified steps",
+    "parameters": [
+      {
+        "name": "N_STEPS",
+        "longName": "Number of Steps Back",
+        "type": "integer",
+        "value": "1"
+      }
+    ]
+  },
+  {
+    "name": "MIN",
+    "description": "Minimum value over specified steps",
+    "parameters": [
+      {
+        "name": "N_STEPS",
+        "longName": "Number of Steps Back",
+        "type": "integer",
+        "value": "1"
+      }
+    ]
+  },
+  {
+    "name": "SHIFT",
+    "description": "Shifts the data a specified number of steps back",
+    "parameters": [
+      {
+        "name": "N_STEPS",
+        "longName": "Number of Steps Back",
+        "type": "integer",
+        "value": "1"
+      }
+    ]
+  },
+  {
+    "name": "SIGMA",
+    "description": "Standard Deviation",
+    "parameters": [
+      {
+        "name": "N_STEPS",
+        "longName": "Number of Steps Back",
+        "type": "integer",
+        "value": "1"
+      }
+    ]
+  },
+  {
+    "name": "BOLU",
+    "description": "Upper Bollinger Band",
+    "parameters": [
+      {
+        "name": "BB_PERIOD",
+        "longName": "Period for Bollinger Band",
+        "type": "integer",
+        "value": "20"
+      },
+      {
+        "name": "BB_STD_DEV",
+        "longName": "Standard Deviation for Bollinger Band",
+        "type": "double",
+        "value": "2.0"
+      }
+    ]
+  },
+  {
+    "name": "BOLD",
+    "description": "Lower Bollinger Band",
+    "parameters": [
+      {
+        "name": "BB_PERIOD",
+        "longName": "Period for Bollinger Band",
+        "type": "integer",
+        "value": "20"
+      },
+      {
+        "name": "BB_STD_DEV",
+        "longName": "Standard Deviation for Bollinger Band",
+        "type": "double",
+        "value": "2.0"
+      }
+    ]
+  },
+  {
+    "name": "RSI",
+    "description": "Relative Strength Index",
+    "parameters": [
+      {
+        "name": "RSI_PERIOD",
+        "longName": "Period for RSI",
+        "type": "integer",
+        "value": "14"
+      }
+    ]
+  },
+  {
+    "name": "ROUNDD",
+    "description": "Round down to the nearest integer",
+    "parameters": [
+    ]
+  },
+  {
+    "name": "ROUNDU",
+    "description": "Round up to the nearest integer",
+    "parameters": [
+    ]
+  }
+]
