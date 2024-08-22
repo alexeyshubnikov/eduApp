@@ -1,0 +1,134 @@
+[
+  {
+    "symbol": "AAPL",
+    "name": "Apple Inc.",
+    "type": "stock",
+    "description": "American technology company specializing in consumer electronics."
+  },
+  {
+    "symbol": "GM",
+    "name": "General Motors",
+    "type": "stock",
+    "description": "American multinational corporation manufacturing vehicles and vehicle parts."
+  },
+  {
+    "symbol": "TSLA",
+    "name": "Tesla Inc",
+    "type": "stock",
+    "description": "American electric vehicle and clean energy company."
+  },
+  {
+    "symbol": "CVX",
+    "name": "Chevron Corporation",
+    "type": "stock",
+    "description": "American multinational energy corporation involved in oil, gas, and geothermal energy."
+  },
+  {
+    "symbol": "UAL",
+    "name": "United Airlines",
+    "type": "stock",
+    "description": "Major American airline headquartered in Chicago, Illinois."
+  },
+  {
+    "symbol": "KO",
+    "name": "Coca-Cola Co.",
+    "type": "stock",
+    "description": "Iconic beverage manufacturer and marketer."
+  },
+  {
+    "symbol": "NKE",
+    "name": "Nike, Inc.",
+    "type": "stock",
+    "description": "Global leader in athletic footwear and apparel."
+  },
+  {
+    "symbol": "V",
+    "name": "Visa",
+    "type": "stock",
+    "description": "Multinational financial services corporation facilitating electronic funds transfers."
+  },
+  {
+    "symbol": "PG",
+    "name": "Procter & Gamble",
+    "type": "stock",
+    "description": "American multinational consumer goods corporation."
+  },
+  {
+    "symbol": "DIS",
+    "name": "Disney",
+    "type": "stock",
+    "description": "Diversified multinational mass media and entertainment conglomerate."
+  },
+  {
+    "symbol": "BTC",
+    "name": "Bitcoin",
+    "type": "crypto",
+    "description": "Decentralized digital currency without a central bank."
+  },
+  {
+    "symbol": "ETH",
+    "name": "Ethereum",
+    "type": "crypto",
+    "description": "Decentralized blockchain with smart contract functionality."
+  },
+  {
+    "symbol": "LTC",
+    "name": "Litecoin",
+    "type": "crypto",
+    "description": "Cryptocurrency similar to Bitcoin but with faster transaction confirmation."
+  },
+  {
+    "symbol": "XRP",
+    "name": "Ripple",
+    "type": "crypto",
+    "description": "Digital payment protocol more known for its digital currency, XRP."
+  },
+  {
+    "symbol": "ADA",
+    "name": "Cardano",
+    "type": "crypto",
+    "description": "Blockchain platform for smart contracts with a proof-of-stake consensus model."
+  },
+  {
+    "symbol": "DOT",
+    "name": "Polkadot",
+    "type": "crypto",
+    "description": "Protocol that connects blockchains, allowing them to work together."
+  },
+  {
+    "symbol": "SOL",
+    "name": "Solana",
+    "type": "crypto",
+    "description": "Decentralized blockchain supporting decentralized finance solutions."
+  },
+  {
+    "symbol": "SHIB",
+    "name": "Shiba Inu",
+    "type": "crypto",
+    "description": "Decentralized meme token that evolved into a vibrant ecosystem."
+  },
+  {
+    "symbol": "BRENT",
+    "name": "Brent Crude",
+    "type": "commodity",
+    "description": "Major trading classification of sweet light crude oil."
+  },
+  {
+    "symbol": "SUGAR",
+    "name": "Sugar",
+    "type": "commodity",
+    "description": "Commodity traded primarily on the ICE exchange."
+  },
+  {
+    "symbol": "WHEAT",
+    "name": "Wheat",
+    "type": "commodity",
+    "description": "Essential grain commodity, staple in global agriculture."
+  },
+  {
+    "symbol": "SP500",
+    "name": "S&P 500 Index",
+    "type": "index",
+    "description": "Market index of 500 of the largest companies listed on stock exchanges in the United States."
+  }
+]

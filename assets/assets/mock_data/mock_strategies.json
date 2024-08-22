@@ -1,0 +1,374 @@
+[
+  {
+    "id": "00000000-0000-0000-0000-000000000003",
+    "configId": "00000000-0000-0000-0000-000000000003",
+    "strategyType": "RuleTrading",
+    "strategyTypeVersion": 1,
+    "version": 1,
+    "info": {
+      "author": "Bob",
+      "name": "Dollar cost average",
+      "description": "Buy assets for even accumulation",
+      "tags": [
+        "DCA"
+      ],
+      "riskLevel": 2
+    },
+    "parameters": [
+      {
+        "name": "asset1",
+        "type": "asset",
+        "value": "AAPL"
+      },
+      {
+        "name": "asset2",
+        "type": "asset",
+        "value": "V"
+      },
+      {
+        "name": "asset3",
+        "type": "asset",
+        "value": "TSLA"
+      },
+      {
+        "name": "spend",
+        "type": "number",
+        "value": "10"
+      }
+    ],
+    "components": [
+      {
+        "type": "total",
+        "name": "total1",
+        "description": "Total of AAPL",
+        "parameters": {
+          "asset": "$asset1"
+        }
+      },
+      {
+        "type": "total",
+        "name": "total2",
+        "description": "Total of V",
+        "parameters": {
+          "asset": "$asset2"
+        }
+      },
+      {
+        "type": "total",
+        "name": "total3",
+        "description": "Total of TSLA",
+        "parameters": {
+          "asset": "$asset3"
+        }
+      }
+    ],
+    "strategy": {
+      "rules": [
+        {
+          "expressions": [
+            "assets:=asset1,asset2,asset3",
+            "min_total_idx:=min_idx3(total1,total2,total3)",
+            "asset:=element4(min_total_idx, assets)",
+            "True"
+          ],
+          "actions": [
+            {
+              "name": "Buy",
+              "parameters": {
+                "asset": "$asset",
+                "total": "$spend",
+                "buy": "true"
+              }
+            }
+          ],
+          "description": "This rule identifies the instrument with the minimum total value and executes a market buy."
+        }
+      ]
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000002",
+    "configId": "00000000-0000-0000-0000-000000000002",
+    "strategyType": "RuleTrading",
+    "strategyTypeVersion": 1,
+    "info": {
+      "name": "EMA Crossover Strategy",
+      "author": "",
+      "description": "A strategy based on EMA crossovers",
+      "tags": [
+        "EMA",
+        "crossover"
+      ],
+      "riskLevel": 1
+    },
+    "parameters": [
+      {
+        "name": "asset",
+        "type": "asset",
+        "value": "AAPL",
+        "description": "AAPL"
+      },
+      {
+        "name": "amount",
+        "type": "number",
+        "value": "100"
+      }
+    ],
+    "components": [
+      {
+        "type": "ta",
+        "name": "short_ema",
+        "description": "Short Period EMA",
+        "parameters": {
+          "asset": "$asset",
+          "ohlcv": "close",
+          "indicator": "ema",
+          "period": "12"
+        }
+      },
+      {
+        "type": "ta",
+        "name": "long_ema",
+        "description": "Long Period EMA",
+        "parameters": {
+          "asset": "$asset",
+          "ohlcv": "close",
+          "indicator": "ema",
+          "period": "26"
+        }
+      }
+    ],
+    "strategy": {
+      "rules": [
+        {
+          "expressions": [
+            "short_ema >> long_ema"
+          ],
+          "actions": [
+            {
+              "name": "MARKET_BUY",
+              "parameters": {
+                "asset": "$asset",
+                "amount": "$amount"
+              }
+            }
+          ],
+          "description": "Buy when short EMA crosses above long EMA."
+        },
+        {
+          "expressions": [
+            "short_ema << long_ema"
+          ],
+          "actions": [
+            {
+              "name": "MARKET_SELL",
+              "parameters": {
+                "asset": "$asset",
+                "amount": "$amount"
+              }
+            }
+          ],
+          "description": "Sell when short EMA crosses below long EMA."
+        }
+      ]
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000005",
+    "configId": "00000000-0000-0000-0000-000000000002",
+    "strategyType": "RuleTrading",
+    "strategyTypeVersion": 1,
+    "info": {
+      "author": "Bob",
+      "name": "RSI Strategy with unreasonably long name",
+      "description": "A strategy that uses the RSI indicator to identify overbought or oversold conditions and makes trades based on these signals.",
+      "tags": [
+        "technical",
+        "RSI"
+      ],
+      "riskLevel": 3
+    },
+    "parameters": [
+      {
+        "name": "asset",
+        "type": "asset",
+        "value": "AAPL",
+        "description": "AAPL"
+      },
+      {
+        "name": "indicator",
+        "type": "technical",
+        "value": "rsi"
+      },
+      {
+        "name": "amount",
+        "type": "number",
+        "value": "10"
+      },
+      {
+        "name": "period",
+        "type": "number",
+        "value": "14"
+      },
+      {
+        "name": "overboughtThreshold",
+        "type": "number",
+        "value": "70"
+      },
+      {
+        "name": "oversoldThreshold",
+        "type": "number",
+        "value": "30"
+      }
+    ],
+    "components": [
+      {
+        "type": "ta",
+        "name": "rsi14",
+        "description": "Relative Strength Index 14 Days",
+        "parameters": {
+          "asset": "$asset",
+          "ohlcv": "close",
+          "indicator": "rsi",
+          "period": "$period"
+        }
+      }
+    ],
+    "strategy": {
+      "rules": [
+        {
+          "expressions": [
+            "rsi14 < oversoldThreshold"
+          ],
+          "actions": [
+            {
+              "name": "Buy",
+              "parameters": {
+                "asset": "$asset",
+                "amount": "$amount",
+                "buy": "true"
+              }
+            }
+          ],
+          "description": "Buy when the RSI is below the oversold threshold."
+        },
+        {
+          "expressions": [
+            "rsi14 > overboughtThreshold"
+          ],
+          "actions": [
+            {
+              "name": "Sell",
+              "parameters": {
+                "asset": "$asset",
+                "amount": "$amount",
+                "sell": "true"
+              }
+            }
+          ],
+          "description": "Sell when the RSI is above the overbought threshold."
+        }
+      ]
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000001",
+    "configId": "00000000-0000-0000-0000-000000000002",
+    "strategyType": "RuleTrading",
+    "strategyTypeVersion": 1,
+    "info": {
+      "author": "Bob",
+      "name": "Dynamic grid strategy",
+      "description": "A grid strategy that works on dynamic market orders",
+      "tags": [
+        "dip",
+        "rule-based"
+      ],
+      "riskLevel": 1
+    },
+    "parameters": [
+      {
+        "name": "asset",
+        "type": "asset",
+        "value": "AAPL"
+      },
+      {
+        "name": "amount",
+        "type": "number",
+        "value": "1"
+      }
+    ],
+    "components": [
+      {
+        "type": "bars",
+        "name": "price",
+        "description": "Bar Close",
+        "parameters": {
+          "asset": "$asset",
+          "ohlcv": "close"
+        }
+      },
+      {
+        "type": "expression",
+        "name": "prev_price",
+        "description": "Prev History",
+        "parameters": {
+          "expression": "data2(price, 1)"
+        }
+      },
+      {
+        "type": "expression",
+        "name": "expect_up",
+        "description": "Expect Up",
+        "parameters": {
+          "expression": "prev_price+5"
+        }
+      },
+      {
+        "type": "expression",
+        "name": "expect_down",
+        "description": "Expect Down",
+        "parameters": {
+          "expression": "prev_price-5"
+        }
+      }
+    ],
+    "strategy": {
+      "rules": [
+        {
+          "expressions": [
+            "price>expect_up"
+          ],
+          "actions": [
+            {
+              "name": "MARKET_SELL",
+              "parameters": {
+                "asset": "$asset",
+                "amount": "$amount",
+                "direction": "buy"
+              }
+            }
+          ],
+          "description": "Place sell order on grid"
+        },
+        {
+          "expressions": [
+            "price<expect_down"
+          ],
+          "actions": [
+            {
+              "name": "MARKET_BUY",
+              "parameters": {
+                "instrument": "instrument",
+                "amount": "$amount",
+                "direction": "sell"
+              }
+            }
+          ],
+          "description": "Place buy order on grid"
+        }
+      ]
+    }
+  }
+
+]
